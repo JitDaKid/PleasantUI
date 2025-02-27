@@ -53,16 +53,31 @@
 
         <Setter Property="Template">
             <ControlTemplate>
-                <Grid ColumnDefinitions="Auto,Auto,Auto,*,Auto">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition>
+                            <ColumnDefinition.Width>
+                                <OnPlatform x:TypeArguments="GridLength">
+                                    <On Options="macOS">Auto</On>
+                                    <On Options="Default">40</On>
+                                </OnPlatform>
+                            </ColumnDefinition.Width>
+                        </ColumnDefinition>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
                     <Border x:Name="PART_DragWindow"
-                            Grid.Column="0"
+                            Grid.Column="2"
                             Grid.ColumnSpan="3"
                             Background="Transparent"
                             ContextFlyout="{StaticResource WindowMenuFlyout}" />
 
-                    <ContentPresenter x:Name="PART_LeftTitleBarContent" Grid.Column="1" />
+                    <ContentPresenter x:Name="PART_LeftTitleBarContent" Grid.Column="3" />
 
-                    <StackPanel Grid.Column="2"
+                    <StackPanel Grid.Column="4"
                                 x:Name="PART_TitlePanel"
                                 Orientation="Horizontal"
                                 Margin="5 0 0 0"
@@ -80,12 +95,12 @@
                                    Foreground="{DynamicResource TextFillColor3}" />
                     </StackPanel>
 
-                    <ContentPresenter x:Name="PART_TitleBarContent" Grid.Column="3" />
+                    <ContentPresenter x:Name="PART_TitleBarContent" Grid.Column="5" />
 
                     <OnPlatform>
                         <OnPlatform.Default>
                             <PleasantCaptionButtons x:Name="PART_PleasantCaptionButtons" 
-                                                    Grid.Column="4" />
+                                                    Grid.Column="5" />
                         </OnPlatform.Default>
                         <OnPlatform.macOS>
                             <PleasantCaptionButtons x:Name="PART_PleasantCaptionButtons"

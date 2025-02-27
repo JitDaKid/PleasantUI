@@ -34,6 +34,11 @@ public partial class App : PleasantUiExampleApp
 
         desktop.MainWindow = Main as PleasantWindow;
 
+        if (OperatingSystem.IsMacOS() && desktop.MainWindow != null)
+        {
+            desktop.MainWindow.ExtendClientAreaChromeHints = ExtendClientAreaChromeHints.OSXThickTitleBar;
+        }
+
         base.OnFrameworkInitializationCompleted();
     }
 }

@@ -91,6 +91,11 @@
                                             Height="90" />
 
                                     <DockPanel Grid.Row="2">
+                                        <DockPanel.Margin>
+                                            <OnPlatform x:TypeArguments="Thickness">
+                                                <On Options="macOS">0,35,0,0</On>
+                                            </OnPlatform>
+                                        </DockPanel.Margin>  
                                         <SmoothScrollViewer DockPanel.Dock="Top">
                                             <ItemsPresenter Name="PART_ItemsPresenter"
                                                             ItemsPanel="{TemplateBinding ItemsPanel}"
@@ -114,9 +119,14 @@
 
                     <StackPanel Name="PART_StackPanelButtons"
                                 Grid.Column="0"
-                                Margin="5"
                                 Spacing="5"
                                 Orientation="Vertical">
+                        <StackPanel.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Options="macOS">5,50,5,5</On>
+                                <On Options="Default">5</On>
+                            </OnPlatform>
+                        </StackPanel.Margin>        
                         <Button Name="PART_BackButton"
                                 Theme="{StaticResource AppBarButtonTheme}"
                                 ToolTip.Tip="{Localize Back, Default='Back'}"
