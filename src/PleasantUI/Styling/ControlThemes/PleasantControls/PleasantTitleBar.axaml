@@ -53,7 +53,7 @@
 
         <Setter Property="Template">
             <ControlTemplate>
-                <Grid ColumnDefinitions="Auto,Auto,*,Auto">
+                <Grid ColumnDefinitions="Auto,Auto,Auto,*,Auto">
                     <Border x:Name="PART_DragWindow"
                             Grid.Column="0"
                             Grid.ColumnSpan="3"
@@ -80,12 +80,12 @@
                                    Foreground="{DynamicResource TextFillColor3}" />
                     </StackPanel>
 
-                    <ContentPresenter x:Name="PART_TitleBarContent" Grid.Column="2" />
+                    <ContentPresenter x:Name="PART_TitleBarContent" Grid.Column="3" />
 
                     <OnPlatform>
                         <OnPlatform.Default>
                             <PleasantCaptionButtons x:Name="PART_PleasantCaptionButtons" 
-                                                    Grid.Column="3" />
+                                                    Grid.Column="4" />
                         </OnPlatform.Default>
                         <OnPlatform.macOS>
                             <PleasantCaptionButtons x:Name="PART_PleasantCaptionButtons"
