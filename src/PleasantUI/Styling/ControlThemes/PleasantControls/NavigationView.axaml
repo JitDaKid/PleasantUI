@@ -70,8 +70,7 @@
             <ControlTemplate>
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition
-                            Width="{CompiledBinding $parent[NavigationView].CompactPaneLength, Converter={x:Static IntToColumnDefinitionWidthConverter.Instance}}" />
+                        <ColumnDefinition Width="{CompiledBinding $parent[NavigationView].CompactPaneLength, Converter={x:Static IntToColumnDefinitionWidthConverter.Instance}}" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <SplitView Grid.Column="0"
@@ -84,18 +83,13 @@
                         <SplitView.Pane>
                             <Border Name="PART_Border" 
                                     Padding="0">
-                                <Grid RowDefinitions="Auto,Auto,*">
+                                <Grid x:Name="PART_SplitViewGrid" RowDefinitions="Auto,Auto,*">
                                     <Border x:Name="PART_MarginPanel"
                                             Grid.Row="1"
                                             Width="{TemplateBinding CompactPaneLength}"
                                             Height="90" />
 
-                                    <DockPanel Grid.Row="2">
-                                        <DockPanel.Margin>
-                                            <OnPlatform x:TypeArguments="Thickness">
-                                                <On Options="macOS">0,35,0,0</On>
-                                            </OnPlatform>
-                                        </DockPanel.Margin>  
+                                    <DockPanel x:Name="PART_ItemsPresenterDockPanel" Grid.Row="2">
                                         <SmoothScrollViewer DockPanel.Dock="Top">
                                             <ItemsPresenter Name="PART_ItemsPresenter"
                                                             ItemsPanel="{TemplateBinding ItemsPanel}"
@@ -120,13 +114,7 @@
                     <StackPanel Name="PART_StackPanelButtons"
                                 Grid.Column="0"
                                 Spacing="5"
-                                Orientation="Vertical">
-                        <StackPanel.Margin>
-                            <OnPlatform x:TypeArguments="Thickness">
-                                <On Options="macOS">5,50,5,5</On>
-                                <On Options="Default">5</On>
-                            </OnPlatform>
-                        </StackPanel.Margin>        
+                                Orientation="Vertical">       
                         <Button Name="PART_BackButton"
                                 Theme="{StaticResource AppBarButtonTheme}"
                                 ToolTip.Tip="{Localize Back, Default='Back'}"
